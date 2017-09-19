@@ -39,17 +39,15 @@ export default class RegistrationPage extends Component {
             } else {
                 this.setState({
                     registered: true,
-                    alertClass: '',
-                    message: ''
+                    alertClass: 'alert-success',
+                    message: data.message
                 });
-                localStorage.setItem("message", data.message);
-                localStorage.setItem("alertClass", 'alert-success');
             }
         })
     }
     render () {
         if(this.state.registered) {
-            return <Redirect to='/login'/>
+            return <Redirect to={{pathname:'/login', data:{state:this.state}}}/>
         }
         return (
             <div className="col-sm-10 col-md-6 col-lg-4 offset-sm-1 offset-md-3 offset-lg-4">
